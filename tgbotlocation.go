@@ -9,7 +9,7 @@ import (
 
 func main() {
 
-	var TELEGRAM_API_TOKEN string = "your token"
+	var TELEGRAM_API_TOKEN string = "5034933217:AAFVFLM5rgK1EIEGCdBu0YAHONpVMUlNqJg"
 
 	var resp string
 	var chatID int64
@@ -20,9 +20,9 @@ func main() {
 	}
 	log.Printf("Authorized on account %s (https://t.me/%s)", bot.Self.UserName, bot.Self.UserName)
 
-	u := tgbotapi.NewUpdate(0)
-	u.Timeout = 60
-	updates, err := bot.GetUpdatesChan(u)
+	refresh := tgbotapi.NewUpdate(0)
+	refresh.Timeout = 5
+	updates, err := bot.GetUpdatesChan(refresh)
 
 	for update := range updates {
 		if update.Message == nil {
@@ -51,7 +51,11 @@ func main() {
 				log.Printf("Error sending message to telegram.\nMessage: %v\nError: %v", msg, e)
 			}
 		default:
-			resp = fmt.Sprintf("\"%v\" ща как жахну 💥", t)
+			if t == "" {
+				resp = fmt.Sprintf("ща как жахну 💥")
+			} else {
+				resp = fmt.Sprintf("\"%v\" ща как жахну 💥", t)
+			}
 			msg := tgbotapi.NewMessage(chatID, resp)
 
 			if _, e := bot.Send(msg); e != nil {
