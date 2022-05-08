@@ -9,7 +9,7 @@ import (
 
 func main() {
 
-	var TELEGRAM_API_TOKEN string = "5034933217:AAFVFLM5rgK1EIEGCdBu0YAHONpVMUlNqJg"
+	var TELEGRAM_API_TOKEN string = "your:token"
 
 	var resp string
 	var chatID int64
