@@ -36,13 +36,13 @@ func main() {
 		case update.Message.IsCommand():
 			switch update.Message.Command() {
 			case "start", "help":
-				bot.Send(tgbotapi.NewMessage(chatID, "🤖 я живое\n\nкароч я стартую."))
+				bot.Send(tgbotapi.NewMessage(chatID, "🤖 запущен"))
 			case "alert":
-				bot.Send(tgbotapi.NewMessage(chatID, "🚨 ктоя 🤔"))
-			case "sosi":
-				bot.Send(tgbotapi.NewMessage(chatID, "🤔 сам саси"))
+				bot.Send(tgbotapi.NewMessage(chatID, "🚨"))
+			case "what":
+				bot.Send(tgbotapi.NewMessage(chatID, "🤔"))
 			default:
-				bot.Send(tgbotapi.NewMessage(chatID, "🤔 непон"))
+				bot.Send(tgbotapi.NewMessage(chatID, "🤔 не пон"))
 			}
 		case update.Message.Location != nil:
 			resp = "я выезжаю, жди меня 😸"
